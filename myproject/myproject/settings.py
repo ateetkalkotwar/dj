@@ -74,12 +74,15 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+import os
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default="postgresql://sample_kop1_user:N6TL2d9rtHLPoBMI8iCpReXxC4kcZVc7@dpg-d43iv5ali9vc73d46esg-a.oregon-postgres.render.com/sample_kop1",
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 
@@ -124,3 +127,4 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
